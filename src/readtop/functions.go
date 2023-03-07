@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"redhat.com/ess/esstools"
+	"1k.local/tuff/tools"
 )
 
 func (top *myTop) NextTop(topLineScanner *bufio.Scanner) bool {
@@ -25,7 +25,7 @@ func (top *myTop) NextTop(topLineScanner *bufio.Scanner) bool {
 }
 
 func (top myTop) PrintTop(maxLines int) {
-	for line := 0; line < esstools.MinInteger(len(top.text)-2, maxLines); line++ {
+	for line := 0; line < tools.MinInteger(len(top.text)-2, maxLines); line++ {
 		fmt.Println(top.text[line])
 	}
 	nextTopFirstLine = top.text[len(top.text)-1]

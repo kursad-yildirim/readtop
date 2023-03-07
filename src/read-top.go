@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	"redhat.com/ess/esstools"
-	"redhat.com/ess/readtop"
+	"1k.local/tuff/readtop"
+	"1k.local/tuff/tools"
 )
 
 func main() {
@@ -18,16 +18,16 @@ func main() {
 
 	// Open top file and define line scanner
 	topFile, err := os.Open(readtop.InputFileName)
-	esstools.Check(err)
+	tools.Check(err)
 	defer topFile.Close()
 	topLineScanner := bufio.NewScanner(topFile)
 	err = topLineScanner.Err()
-	esstools.Check(err)
+	tools.Check(err)
 
 	// Define "top" scanner, Scan for individual top outputs,  and  display continously
 	topLineScanner.Scan() // initialize scanner
 	for readtop.Top.NextTop(topLineScanner) {
-		esstools.ClearConsole()
+		tools.ClearConsole()
 		readtop.Top.PrintTop(readtop.MaxLines)
 		time.Sleep(readtop.Top.Freeze[readtop.Top.HasFocus])
 	}
