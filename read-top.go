@@ -21,8 +21,8 @@ func main() {
 	tools.Check(err)
 	defer topFile.Close()
 	topLineScanner := bufio.NewScanner(topFile)
-	err = topLineScanner.Err()
-	tools.Check(err)
+	//err = topLineScanner.Err()
+	tools.Check(topLineScanner.Err())
 
 	// Define "top" scanner, Scan for individual top outputs,  and  display continously
 	topLineScanner.Scan() // initialize scanner
